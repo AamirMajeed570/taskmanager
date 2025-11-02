@@ -1,25 +1,40 @@
 import React from 'react'
 import { useTasks } from '../context/Tasksprovider'
 
-
 export default function Filters() {
-    const { filter, setFilter, tasks, clearCompleted } = useTasks()
-    const completedCount = tasks.filter(t => t.completed).length
-    const total = tasks.length
+  const { filter, setFilter, tasks, clearCompleted } = useTasks()
+  const completedCount = tasks.filter(t => t.completed).length
+  const pendingCount = tasks.filter(t => !t.completed).length
+  const total = tasks.length
 
+  return (
+    <section className="filters">
+      <div className="tabs">
+        {['all', 'pending', 'completed'].map((f) => (
+          <button
+            key={f}
+            className={`tab-btn ${filter === f ? 'active' : ''}`}
+            onClick={() => setFilter(f as any)}
+          >
+            {f.charAt(0).toUpperCase() + f.slice(1)}
+          </button>
+        ))}
+      </div>
 
-    return (
-        <section className="filters">
-            <div className="tabs">
-                <button className={filter === 'all' ? 'active' : ''} onClick={() => setFilter('all')}>All</button>
-                <button className={filter === 'pending' ? 'active' : ''} onClick={() => setFilter('pending')}>Pending</button>
-                <button className={filter === 'completed' ? 'active' : ''} onClick={() => setFilter('completed')}>Completed</button>
-            </div>
-            <div className="meta">
-                <span>{total} tasks</span>
-                <span>{completedCount} completed</span>
-                <button className="btn small" onClick={clearCompleted} disabled={completedCount === 0}>Clear completed</button>
-            </div>
-        </section>
-    )
+      <div className="meta">
+        <div className="stats">
+          <span className="stat total">{total} total</span>
+          <span className="stat pending">{pendingCount} pending</span>
+          <span className="stat completed">{completedCount} completed</span>
+        </div>
+        <button
+          className="btn clear-btn"
+          onClick={clearCompleted}
+          disabled={completedCount === 0}
+        >
+          Clear Completed
+        </button>
+      </div>
+    </section>
+  )
 }

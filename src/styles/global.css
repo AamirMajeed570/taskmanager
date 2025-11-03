@@ -76,7 +76,7 @@ color:var(--text);
 
 .tab-btn.active {
   background: var(--accent);
-  color: #fff;
+  /* color: #fff; */
   font-weight: 600;
   box-shadow: 0 4px 10px rgba(37,99,235,0.4);
 }
@@ -96,7 +96,7 @@ color:var(--text);
 
 .stats {
   display: flex;
-  gap: 12px;
+  gap: 30px;
   font-size: 0.95rem;
   font-weight: 500;
 }
@@ -130,11 +130,12 @@ color:var(--text);
   border-radius: 8px;
   font-weight: 500;
   transition: all 0.2s ease;
+  margin-left: 30px;
 }
 
 .clear-btn:hover:not(:disabled) {
   background: var(--accent);
-  /* color: white; */
+  color: white;
   box-shadow: 0 3px 8px rgba(37,99,235,0.4);
 }
 

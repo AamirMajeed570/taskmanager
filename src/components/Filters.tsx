@@ -23,9 +23,9 @@ export default function Filters() {
 
       <div className="meta">
         <div className="stats">
-          <span className="stat total">{total} total</span>
-          <span className="stat pending">{pendingCount} pending</span>
-          <span className="stat completed">{completedCount} completed</span>
+          <span className="stat total">{total} Total</span>
+          <span className="stat pending">{pendingCount} Pending</span>
+          <span className="stat completed">{completedCount} Completed</span>
         </div>
         <button
           className="btn clear-btn"
